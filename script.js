@@ -92,14 +92,22 @@ function resetAuto() {
 }
 
 /* WATCH BUTTON */
-document.querySelectorAll(".watch").forEach(btn => {
-  btn.addEventListener("click", openPlayer);
-});
 
-function openPlayer() {
-  let videoList = ["3.mp4", "3.mp4", "3.mp4"];
-  window.location.href = "player.html?video=" + videoList[index];
-}
+document.querySelectorAll(".watch").forEach(btn => {
+  btn.addEventListener("click", () => {
+
+    // current hero slide
+    let slide = btn.closest(".slide");
+
+    // video path
+    let movie = slide.dataset.full;
+
+    // full player open
+    window.location.href =
+      "player.html?movie=" + encodeURIComponent(movie);
+
+  });
+});
 
 /* INIT */
 updateHero();
